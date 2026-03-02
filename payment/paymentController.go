@@ -1,8 +1,8 @@
 package payment
 
 import (
-	"ecommerce-system/cart"    // Importa el paquete de carrito para acceder a los datos
-	"ecommerce-system/product" // Importa el paquete de producto para los tipos de datos
+	"ecommerce-system/cart"
+	"ecommerce-system/product"
 	"encoding/json"
 	"net/http"
 )
@@ -28,7 +28,7 @@ func ProcessPayment(w http.ResponseWriter, r *http.Request) {
 	var userItems []product.Product
 	found := false
 
-	// Accedemos a la lista global de carritos del paquete cart
+	// Accede a la lista global de carritos del paquete cart
 	for _, c := range cart.Carts {
 		if c.UserID == details.UserID {
 			userItems = c.Items
@@ -44,10 +44,10 @@ func ProcessPayment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 4. APLICACIÓN DE PROGRAMACIÓN FUNCIONAL (Criterio de Evaluación)
-	// Usamos la función de orden superior 'ApplyToCart' definida en el paquete cart.
-	// Pasamos una función anónima que extrae el precio de cada producto.
+	// UsSe uso la función de orden superior 'ApplyToCart' definida en el paquete cart.
+	// Pase una función anónima que extrae el precio de cada producto.
 	total := cart.ApplyToCart(userItems, func(p product.Product) float64 {
-		return p.Price // 'Price' debe estar en mayúscula para ser visible aquí
+		return p.Price
 	})
 
 	// 5. Finalizar la transacción

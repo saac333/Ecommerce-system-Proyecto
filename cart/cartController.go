@@ -16,7 +16,6 @@ type Cart struct {
 
 var Carts []Cart
 
-// AGREGA ESTA FUNCIÓN AL FINAL: Es la que falta y causa el error en payment
 func ApplyToCart(items []product.Product, f func(product.Product) float64) float64 {
 	var res float64
 	for _, item := range items {
